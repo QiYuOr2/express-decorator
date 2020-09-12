@@ -2,13 +2,15 @@
   "name": "@tuzilow/express-decorator",
   "version": "0.0.1",
   "description": "some ES7 decorators for express",
-  "main": "./lib/index.js",
+  "main": "./src/index.js",
   "author": "tuzilow",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node example/index"
+    "start": "babel-node example/index",
+    "build": "babel src/ --out-dir lib"
   },
   "devDependencies": {
+    "@babel/cli": "^7.11.6",
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
