@@ -1,6 +1,6 @@
 {
   "name": "@tuzilow/express-decorator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "some ES7 decorators for express",
   "main": "./lib/index.js",
   "author": "tuzilow",
