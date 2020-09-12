@@ -1,0 +1,27 @@
+{
+  "name": "@tuzilow/express-decorator",
+  "version": "0.0.1",
+  "description": "some ES7 decorators for express",
+  "main": "./lib/index.js",
+  "author": "tuzilow",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node example/index"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^9.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "es6 decorator"
+  ]
+}
