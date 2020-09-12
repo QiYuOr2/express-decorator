@@ -2,7 +2,7 @@
   "name": "@tuzilow/express-decorator",
   "version": "0.0.1",
   "description": "some ES7 decorators for express",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "author": "tuzilow",
   "license": "MIT",
   "scripts": {
