@@ -23,5 +23,9 @@
     "node",
     "express",
     "es6 decorator"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tuzilow/express-decorator.git"
+  }
 }
