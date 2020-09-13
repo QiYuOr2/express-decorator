@@ -12,17 +12,29 @@ const DeleteMethod = 'DELETE';
  * @param {Object} routes 路由对象
  */
 function callback(target, routes) {
-  return (req, res) => {
+  return (req, res, next) => {
     const method = req.method || 'GET';
     const path = req.path || parse(req.url).pathname;
     if (routes[method]) {
-      for (const { matcher, fn } of routes[method]) {
+      for (const { matcher, middleware, fn } of routes[method]) {
         const params = matcher(path);
         if (params) {
           req.params = params;
-          Reflect.apply(fn, target, [req, res]);
+          let idx = 0;
+          next = () => {
+            if (idx === middleware.length) {
+              Reflect.apply(fn, target, [req, res]);
+            } else {
+              middleware[idx++](req, res, next);
+            }
+          };
+          next();
+          return;
         }
       }
+    }
+    if (typeof next === 'function') {
+      next();
     }
   };
 }
@@ -66,7 +78,7 @@ export function Controller(constructor) {
  * @param {String} path 请求URL
  * @param {String} method 请求方法
  */
-function RouteFactory(path, method) {
+function RouteFactory(path, method, ...middleware) {
   return (target, key, descriptor) => {
     const rootUrl = target.constructor.$rootUrl || ''; // 获取根路由
     let matcher; // 匹配URL函数
@@ -108,6 +120,7 @@ function RouteFactory(path, method) {
       fn: descriptor.value,
       matcher,
       method,
+      middleware,
     });
   };
 }
